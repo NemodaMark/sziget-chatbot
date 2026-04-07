@@ -175,7 +175,7 @@ A pontos lista mindig a hivatalos oldalon található."""),
 
 # --- pricing ---
 ("Hol lehet jegyet venni a Szigetre?", "pricing",
- "A jegyeket a hivatalos Sziget weboldalon lehet megvásárolni, illetve egyes partneroldalakon is elérhetők."),
+ "A jegyeket a hivatalos Sziget weboldalon lehet megvásárolni ( https://szigetfestival.com/hu/jegyek#/21417 ), illetve egyes partneroldalakon is elérhetők."),
 
 ("Melyik a legbiztonságosabb jegyvásárlási mód?", "pricing",
  "A legbiztonságosabb a hivatalos Sziget oldalon történő vásárlás, így elkerülheted a hamis jegyeket."),
