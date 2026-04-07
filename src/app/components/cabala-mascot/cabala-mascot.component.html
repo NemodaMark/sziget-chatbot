@@ -1,0 +1,45 @@
+<div class="mascot" [class.composer]="size() === 'composer'" [class.reply]="size() === 'reply'">
+  <svg viewBox="0 0 160 160" aria-hidden="true">
+    <defs>
+      <linearGradient id="szigiHeadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffe066" />
+        <stop offset="33%" stop-color="#ff9f1c" />
+        <stop offset="68%" stop-color="#ff006e" />
+        <stop offset="100%" stop-color="#6c63ff" />
+      </linearGradient>
+      <linearGradient id="szigiHeadphoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1de1ff" />
+        <stop offset="100%" stop-color="#7d5cff" />
+      </linearGradient>
+      <radialGradient id="szigiShine" cx="30%" cy="28%" r="60%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.7)" />
+        <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+      </radialGradient>
+    </defs>
+
+    <path class="burst burst-one" d="M80 14 L88 28 L104 20 L100 36 L116 38 L104 48 L116 60 L100 60 L104 78 L88 68 L80 82 L72 68 L56 78 L60 60 L44 60 L56 48 L44 38 L60 36 L56 20 L72 28 Z" />
+    <path class="burst burst-two" d="M80 8 L90 24 L110 14 L104 34 L126 38 L110 52 L124 68 L102 66 L104 90 L86 78 L80 98 L74 78 L56 90 L58 66 L36 68 L50 52 L34 38 L56 34 L50 14 L70 24 Z" />
+
+    <path class="headband" d="M40 78 C40 26, 120 26, 120 78" />
+    <rect class="headphone left" x="24" y="68" width="22" height="38" rx="12" />
+    <rect class="headphone right" x="114" y="68" width="22" height="38" rx="12" />
+
+    <path class="head-outline" d="M80 28 C107 28, 128 49, 128 78 C128 107, 107 128, 80 128 C53 128, 32 107, 32 78 C32 49, 53 28, 80 28 Z" />
+    <path class="head-fill" d="M80 32 C105 32, 124 51, 124 78 C124 105, 105 124, 80 124 C55 124, 36 105, 36 78 C36 51, 55 32, 80 32 Z" />
+    <ellipse class="shine" cx="65" cy="54" rx="22" ry="16" />
+
+    <circle class="eye left" cx="64" cy="74" r="7" />
+    <circle class="eye right" cx="96" cy="74" r="7" />
+    <circle class="pupil left" cx="66" cy="72" r="2.5" />
+    <circle class="pupil right" cx="98" cy="72" r="2.5" />
+    <ellipse class="blush left" cx="54" cy="90" rx="8" ry="5" />
+    <ellipse class="blush right" cx="106" cy="90" rx="8" ry="5" />
+    <path class="mouth" d="M62 94 Q80 111 98 94" />
+    <path class="tongue" d="M71 99 Q80 108 89 99 Q80 116 71 99" />
+
+    <path class="chin-shadow" d="M52 103 Q80 118 108 103" />
+
+    <circle class="sticker" cx="40" cy="44" r="9" />
+    <text class="sticker-text" x="40" y="47">S</text>
+  </svg>
+</div>

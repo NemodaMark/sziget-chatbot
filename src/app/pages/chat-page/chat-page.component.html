@@ -1,0 +1,60 @@
+<div class="chat-page">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <p class="eyebrow">Sajat tered</p>
+      <h1>Szigi Chat Zone</h1>
+      <p class="user-chip">{{ auth.user()?.name }}</p>
+    </div>
+
+    <button type="button" class="new-chat-btn" (click)="createChat()">Uj flow</button>
+
+    <div class="chat-list">
+      <button
+        type="button"
+        class="chat-tile"
+        [class.active]="entry.id === chat.activeChatId()"
+        (click)="chat.selectChat(entry.id)"
+        *ngFor="let entry of chat.chats()"
+      >
+        <strong>{{ entry.title }}</strong>
+        <span>{{ entry.preview || 'Uj Sziget beszelgetes' }}</span>
+      </button>
+    </div>
+
+    <button type="button" class="logout-btn" (click)="logout()">Kijelentkezes</button>
+  </aside>
+
+  <main class="conversation-shell">
+    <header class="conversation-header">
+      <div>
+        <p class="eyebrow">Szigi live</p>
+        <h2>{{ chat.activeChat()?.title || 'Betoltes...' }}</h2>
+      </div>
+      <div class="status-pill">{{ chat.loading() ? 'Valasz jon...' : 'Online' }}</div>
+    </header>
+
+    <section class="messages">
+      <article class="message" [class.assistant]="entry.role === 'assistant'" [class.user]="entry.role === 'user'" *ngFor="let entry of chat.activeChat()?.messages ?? []">
+        <div class="message-speaker" *ngIf="entry.role === 'assistant'">
+          <app-cabala-mascot size="reply" />
+        </div>
+        <div class="message-meta">
+          <span>{{ entry.speakerLabel }}</span>
+          <span>{{ entry.createdAt | date:'shortTime' }}</span>
+        </div>
+        <p>{{ entry.content }}</p>
+      </article>
+    </section>
+
+    <form class="composer" (ngSubmit)="sendMessage()">
+      <textarea
+        name="chatDraft"
+        rows="3"
+        [ngModel]="draft()"
+        (ngModelChange)="draft.set($event)"
+        placeholder="Irj lineuprol, jegyekrol, nappali tervrol vagy ejszakai korokrol..."
+      ></textarea>
+      <button type="submit" [disabled]="chat.loading() || !draft().trim() || !chat.activeChat()">Kuldes</button>
+    </form>
+  </main>
+</div>

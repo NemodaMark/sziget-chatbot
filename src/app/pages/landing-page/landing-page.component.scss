@@ -1,0 +1,462 @@
+:host {
+  display: block;
+}
+
+.festival-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 239, 75, 0.35), transparent 18%),
+    linear-gradient(180deg, #f4c4b8 0%, #f4c4b8 72%, #efb9ab 100%);
+  color: #14154b;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  background: #14154b;
+  border-bottom: 3px solid rgba(255, 239, 75, 0.18);
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+.site-nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  color: #fff8ef;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.header-cta,
+.hero-button,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.35rem;
+  border: 3px solid #d62ca3;
+  border-radius: 1rem;
+  background: #fff23d;
+  color: #d62ca3;
+  text-decoration: none;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1;
+  box-shadow: 6px 8px 0 #d62ca3;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.header-cta:hover,
+.hero-button:hover,
+button:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 6px 0 #d62ca3;
+}
+
+main {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 2rem;
+}
+
+.hero-section {
+  display: grid;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.hero-copy,
+.hero-card,
+.chat-section {
+  border: 3px solid #d62ca3;
+  border-radius: 1.5rem;
+  box-shadow: 8px 9px 0 #d62ca3;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem;
+  background: rgba(255, 248, 239, 0.42);
+}
+
+.eyebrow {
+  margin: 0;
+  color: #d62ca3;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  line-height: 0.92;
+}
+
+h1 {
+  color: #d62ca3;
+  font-size: clamp(2.2rem, 10vw, 4.8rem);
+}
+
+h2 {
+  color: #fff23d;
+  font-size: clamp(2rem, 8vw, 3.4rem);
+}
+
+.lede {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  font-weight: 700;
+  max-width: 32rem;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.hero-chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.95rem;
+  border: 2px solid rgba(111, 55, 35, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 248, 239, 0.34);
+  color: #6f3723;
+  font-weight: 800;
+}
+
+.hero-card {
+  overflow: hidden;
+  background: #14154b;
+}
+
+.hero-card-frame {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 25% 26%, rgba(41, 218, 222, 0.28), transparent 18%),
+    radial-gradient(circle at 78% 18%, rgba(164, 98, 255, 0.28), transparent 16%),
+    linear-gradient(135deg, #0d6173 0%, #1d2857 55%, #13163d 100%);
+}
+
+.hero-mascot {
+  display: block;
+  width: min(100%, 280px);
+  max-height: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(10, 11, 49, 0.22));
+}
+
+.hero-card-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem 1.1rem;
+  background: #fff3d7;
+  color: #14154b;
+  font-weight: 700;
+}
+
+.hero-card-caption p {
+  margin: 0;
+}
+
+.caption-label {
+  color: #d62ca3;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+}
+
+.chat-section {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at top right, rgba(255, 239, 75, 0.08), transparent 18%),
+    #17174f;
+}
+
+.chat-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.8rem;
+  padding: 0.45rem 1.1rem;
+  border: 3px solid #d62ca3;
+  border-radius: 999px;
+  background: #fff23d;
+  color: #d62ca3;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.05rem;
+  box-shadow: 4px 5px 0 #d62ca3;
+}
+
+.messages {
+  display: grid;
+  gap: 1rem;
+  margin: 1.4rem 0 1rem;
+}
+
+.message {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.message.assistant {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+
+.message.user {
+  justify-items: end;
+}
+
+.message-avatar {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+}
+
+.message-mascot {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 0.9rem;
+  background: rgba(255, 248, 239, 0.92);
+  padding: 0.25rem;
+}
+
+.message-body {
+  position: relative;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 1.4rem;
+  border: 3px solid #d62ca3;
+  box-shadow: 7px 8px 0 #d62ca3;
+}
+
+.message.assistant .message-body {
+  background: #fff3d7;
+  color: #14154b;
+}
+
+.message.assistant .message-body::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 1.4rem;
+  width: 18px;
+  height: 18px;
+  background: #fff3d7;
+  border-left: 3px solid #d62ca3;
+  border-bottom: 3px solid #d62ca3;
+  transform: rotate(45deg);
+}
+
+.message.user .message-body {
+  width: min(100%, 36rem);
+  background: #fff23d;
+  color: #14154b;
+  border-color: #fff23d;
+  box-shadow: 7px 8px 0 #9f2a88;
+}
+
+.message.user .message-body::before {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  bottom: -11px;
+  width: 18px;
+  height: 18px;
+  background: #fff23d;
+  border-right: 3px solid #fff23d;
+  border-bottom: 3px solid #fff23d;
+  transform: rotate(45deg);
+}
+
+.message-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+}
+
+.message p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+.composer {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.composer-field {
+  display: block;
+}
+
+textarea {
+  width: 100%;
+  min-height: 116px;
+  resize: vertical;
+  padding: 1rem 1.05rem;
+  border: 3px solid #d62ca3;
+  border-radius: 1.3rem;
+  background: #f4c4b8;
+  color: #14154b;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 7px 8px 0 #d62ca3;
+}
+
+textarea::placeholder {
+  color: rgba(20, 21, 75, 0.58);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  background: #fff07a;
+  color: #b03391;
+  box-shadow: 6px 8px 0 #b03391;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 760px) {
+  .site-header {
+    padding: 1rem 2rem;
+  }
+
+  .brand-logo {
+    width: 210px;
+  }
+
+  .site-nav {
+    display: flex;
+  }
+
+  main {
+    width: min(1180px, calc(100% - 3rem));
+    padding: 2rem 0 3rem;
+  }
+
+  .hero-section {
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    gap: 1.4rem;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .chat-section {
+    box-shadow: 10px 12px 0 #d62ca3;
+  }
+
+  .hero-copy {
+    min-height: 100%;
+    align-content: center;
+    padding: 1.8rem;
+  }
+
+  .hero-card-frame {
+    min-height: 420px;
+  }
+
+  .hero-mascot {
+    width: min(100%, 360px);
+    max-height: 340px;
+  }
+
+  .chat-section {
+    padding: 1.6rem;
+  }
+
+  .composer {
+    grid-template-columns: 1fr auto;
+    align-items: stretch;
+  }
+
+  button {
+    min-width: 180px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .site-header {
+    padding: 1.1rem 3rem;
+  }
+
+  .site-nav {
+    gap: 2.25rem;
+  }
+
+  .hero-section {
+    gap: 2rem;
+  }
+
+  .hero-copy {
+    padding: 2.2rem;
+  }
+
+  .chat-section {
+    padding: 2rem;
+  }
+}

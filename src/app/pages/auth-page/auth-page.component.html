@@ -1,0 +1,48 @@
+<div class="auth-page">
+  <a routerLink="/" class="back-link">Vissza a nyitooldalra</a>
+
+  <section class="auth-card">
+    <div class="brand-column">
+      <p class="eyebrow">Sziget Access</p>
+      <h1>Lepj be a teljes Szigi-flowba</h1>
+      <p>
+        Belepes utan tobb sajat beszelgetest nyithatsz, kulon temakat vihetsz tovabb, es minden kerdesed egy helyen marad.
+      </p>
+      <div class="perk-list">
+        <span>Tobb sajat flow</span>
+        <span>Festival look</span>
+        <span>Szigi guide</span>
+      </div>
+    </div>
+
+    <div class="form-column">
+      <div class="tabs">
+        <button type="button" [class.active]="mode() === 'login'" (click)="setMode('login')">Belepes</button>
+        <button type="button" [class.active]="mode() === 'register'" (click)="setMode('register')">Csatlakozas</button>
+      </div>
+
+      <form (ngSubmit)="submit()" class="auth-form">
+        <label *ngIf="mode() === 'register'">
+          <span>Neved</span>
+          <input type="text" name="name" [ngModel]="form().name" (ngModelChange)="updateField('name', $event)" required />
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" [ngModel]="form().email" (ngModelChange)="updateField('email', $event)" required />
+        </label>
+
+        <label>
+          <span>Jelszo</span>
+          <input type="password" name="password" [ngModel]="form().password" (ngModelChange)="updateField('password', $event)" required />
+        </label>
+
+        <p class="error" *ngIf="error()">{{ error() }}</p>
+
+        <button type="submit" class="submit-btn" [disabled]="busy()">
+          {{ busy() ? 'Epp nyitjuk...' : (mode() === 'register' ? 'Csatlakozom' : 'Belepek') }}
+        </button>
+      </form>
+    </div>
+  </section>
+</div>

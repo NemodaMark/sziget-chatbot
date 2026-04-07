@@ -1,0 +1,97 @@
+<div class="festival-page">
+  <header class="site-header">
+    <a class="brand-link" href="#top" aria-label="Sziget Festival home">
+      <img
+        class="brand-logo"
+        src="https://szigetfestival.com/wp-content/uploads/2024/01/SZ26-Logo-Date-Tagline-PINIK-EN-1-1.svg"
+        alt="Sziget Festival"
+      />
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#hero">Flo</a>
+      <a href="#chat">Chat</a>
+      <a href="#tips">Tippek</a>
+    </nav>
+
+    <a class="header-cta" href="#chat">FLO CHAT</a>
+  </header>
+
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Sziget AI guide</p>
+        <h1>Kerdezz ra. Flo hozza a fesztival-flowt.</h1>
+        <p class="lede">
+          Jegyek, lineup, napi tippek vagy csak a hangulat. A chat itt indul, egyszeruen, gyorsan, mobilon is.
+        </p>
+
+        <div class="hero-chips" id="tips">
+          <span>Jegyek</span>
+          <span>Lineup</span>
+          <span>Napi tervek</span>
+        </div>
+
+        <a class="hero-button" href="#chat">INDULJON A CHAT</a>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-frame">
+          <img src="Szigi-head.png" alt="Flo mascot" class="hero-mascot" />
+        </div>
+        <div class="hero-card-caption">
+          <p class="caption-label">Flo</p>
+          <p>A Sziget chatbot guide, most mar kepben.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat-section" id="chat">
+      <div class="chat-intro">
+        <div>
+          <p class="eyebrow">Live chat</p>
+          <h2>Beszelj Floval</h2>
+        </div>
+        <div class="status-pill">ONLINE</div>
+      </div>
+
+      <div class="messages">
+        <article
+          class="message"
+          [class.assistant]="entry.role === 'assistant'"
+          [class.user]="entry.role === 'user'"
+          *ngFor="let entry of guestMessages()"
+        >
+          <div class="message-avatar" *ngIf="entry.role === 'assistant'">
+            <img src="Szigi-head.png" alt="Flo mascot" class="message-mascot" />
+          </div>
+
+          <div class="message-body">
+            <div class="message-meta">
+              <span>{{ entry.speakerLabel }}</span>
+              <span>{{ entry.createdAt | date:'shortTime' }}</span>
+            </div>
+            <p>{{ entry.content }}</p>
+          </div>
+        </article>
+      </div>
+
+      <form class="composer" (ngSubmit)="sendMessage()">
+        <label class="composer-field">
+          <span class="sr-only">Uzenet</span>
+          <textarea
+            name="guestMessage"
+            [ngModel]="message()"
+            (ngModelChange)="message.set($event)"
+            rows="3"
+            placeholder="Kerdezz jegyekrol, lineupral vagy csak dobd be, mire vagy kivancsi..."
+          ></textarea>
+        </label>
+
+        <button type="submit" [disabled]="loading() || !message().trim()">
+          {{ loading() ? 'FLO IR...' : 'KULDES' }}
+        </button>
+      </form>
+    </section>
+  </main>
+</div>
