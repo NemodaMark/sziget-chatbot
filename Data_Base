@@ -172,4 +172,23 @@ A pontos lista mindig a hivatalos oldalon található."""),
 - Workshopok és kreatív programok
 - Chill zónák és nappali pihenés
 - Kisebb színpadok felfedezése új zenékhez"""),
+
+# --- pricing ---
+("Hol lehet jegyet venni a Szigetre?", "pricing",
+ "A jegyeket a hivatalos Sziget weboldalon lehet megvásárolni, illetve egyes partneroldalakon is elérhetők."),
+
+("Melyik a legbiztonságosabb jegyvásárlási mód?", "pricing",
+ "A legbiztonságosabb a hivatalos Sziget oldalon történő vásárlás, így elkerülheted a hamis jegyeket."),
+
+("Lehet helyszínen jegyet venni?", "pricing",
+ "Igen, ha még nem telt ház a fesztivál, akkor a helyszínen is lehet jegyet venni, de általában drágább."),
+
+("Elfogyhatnak a jegyek előre?", "pricing",
+ "Igen, a népszerű napokra és bérletekre gyakran előre elfogynak a jegyek."),
+
+("Van külön VIP jegy is?", "pricing",
+ "Igen, vannak VIP jegyek, amelyek extra kényelmet és külön szolgáltatásokat biztosítanak."),
+
+("Mennyivel drágább a helyszíni jegy?", "pricing",
+ "A helyszíni jegyek általában drágábbak, mint az elővételes árak, ezért érdemes előre megvenni.")
 ]
