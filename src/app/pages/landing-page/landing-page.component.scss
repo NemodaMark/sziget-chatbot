@@ -200,6 +200,48 @@ h2 {
   letter-spacing: 0.04em;
 }
 
+.info-section {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-card {
+  padding: 1.1rem 1.15rem;
+  border: 3px solid #d62ca3;
+  border-radius: 1.4rem;
+  background: rgba(255, 248, 239, 0.5);
+  box-shadow: 7px 8px 0 #d62ca3;
+}
+
+.intro-card {
+  background: #fff3d7;
+}
+
+.info-card h3 {
+  margin: 0;
+  color: #14154b;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  line-height: 0.95;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+.info-card .eyebrow {
+  margin-bottom: 0.55rem;
+}
+
 .chat-section {
   margin-top: 1.5rem;
   padding: 1.25rem;
@@ -427,6 +469,10 @@ button:disabled {
 
   .chat-section {
     padding: 1.6rem;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .composer {
