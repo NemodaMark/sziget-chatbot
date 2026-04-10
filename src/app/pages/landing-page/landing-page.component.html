@@ -100,13 +100,22 @@
             A chat akkor a leghasznosabb, ha gyors iranymutatas kell. Kerdezhetsz konkret dolgokat, de akar laza,
             otletelo modon is hasznalhatod.
           </p>
+          <p class="question-hint">Kattints egy kartyara, es a mintakerdes azonnal bekerul a chatbe.</p>
         </div>
 
         <div class="question-grid">
-          <article class="question-card question-ticket" [ngClass]="theme.accentClass" *ngFor="let theme of questionThemes">
+          <article
+            class="question-card question-ticket"
+            [ngClass]="theme.accentClass"
+            *ngFor="let theme of questionThemes()"
+            (click)="useThemeQuestion(theme.example)"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="'Mintakerdes betoltese: ' + theme.example"
+          >
             <p class="eyebrow">{{ theme.category }}</p>
             <p class="question-title">{{ theme.title }}</p>
-            <p class="question-example">{{ theme.example }}</p>
+            <p class="question-example">"{{ theme.example }}"</p>
           </article>
         </div>
       </section>

@@ -3,6 +3,29 @@
   overflow-x: hidden;
 }
 
+@keyframes sectionFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 .festival-page {
   min-height: 100vh;
   background: linear-gradient(180deg, #f4c4b8 0%, #f4c4b8 72%, #efb9ab 100%);
@@ -137,6 +160,7 @@ main {
 .chat-section {
   border: 3px solid #d62ca3;
   box-shadow: 8px 9px 0 #d62ca3;
+  animation: sectionFloatIn 520ms ease both;
 }
 
 .hero-copy {
@@ -205,6 +229,7 @@ h2 {
   overflow: hidden;
   transform: rotate(-1.3deg);
   background: #6e90a3;
+  animation-delay: 80ms;
 }
 
 .hero-card-frame {
@@ -223,6 +248,7 @@ h2 {
   max-height: 250px;
   object-fit: contain;
   filter: drop-shadow(0 10px 16px rgba(10, 11, 49, 0.22));
+  animation: gentleBob 4.8s ease-in-out infinite;
 }
 
 .hero-card-caption {
@@ -319,6 +345,27 @@ h2 {
   max-width: 24ch;
 }
 
+.question-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  margin: 0.15rem 0 0;
+  padding: 0.45rem 0.8rem;
+  border: 2px solid rgba(255, 239, 75, 0.35);
+  border-radius: 999px;
+  background: rgba(10, 31, 78, 0.18);
+  color: #fff7bf;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.question-hint::before {
+  content: "↗";
+  color: #fff23d;
+  font-size: 0.95rem;
+}
+
 .question-grid {
   align-items: stretch;
 }
@@ -368,6 +415,18 @@ h2 {
   padding: 1.05rem 1.1rem 1.15rem;
   border-width: 3px;
   box-shadow: 7px 8px 0 #d62ca3;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.question-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 5px 6px 0 #d62ca3;
+}
+
+.question-card:focus-visible {
+  outline: 3px solid #fff23d;
+  outline-offset: 4px;
 }
 
 .question-card .eyebrow {
@@ -464,6 +523,7 @@ h2 {
 .message.assistant .message-body {
   background: #fff3d7;
   color: #14154b;
+  animation: sectionFloatIn 360ms ease both;
 }
 
 .message.assistant .message-body::before {
@@ -725,6 +785,13 @@ button:disabled {
   .question-example {
     font-size: 0.86rem;
     max-width: none;
+  }
+
+  .question-hint {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.35;
   }
 
   .chat-band {

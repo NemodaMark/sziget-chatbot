@@ -11,13 +11,13 @@ export class ChatService {
   private readonly auth = inject(AuthService);
 
   private readonly guestMessagesState = signal<ChatMessage[]>([
-    {
-      id: 1,
-      role: 'assistant',
-      content: 'Flo itt van. Dobd be, milyen napot raknal ossze a Szigeten, es indulhat a flow.',
-      speakerLabel: 'FLO MONDJA',
-      createdAt: new Date().toISOString()
-    }
+      {
+        id: 1,
+        role: 'assistant',
+        content: 'Flo itt van. Dobd be, milyen napot raknal ossze a Szigeten, es indulhat a flow.',
+        speakerLabel: 'FLO',
+        createdAt: new Date().toISOString()
+      }
   ]);
   private readonly chatsState = signal<ChatSummary[]>([]);
   private readonly activeChatIdState = signal<number | null>(null);
@@ -49,7 +49,7 @@ export class ChatService {
         }))
       });
 
-      this.guestMessagesState.set(response.chat.messages);
+      this.guestMessagesState.set(this.normalizeMessages(response.chat.messages));
     } finally {
       this.loadingState.set(false);
     }
@@ -64,8 +64,9 @@ export class ChatService {
     this.loadingState.set(true);
     try {
       const response = await this.api.listChats(token);
-      this.chatsState.set(response.chats);
-      this.activeChatIdState.set(response.chats[0]?.id ?? null);
+      const normalizedChats = response.chats.map((chat) => this.normalizeChat(chat));
+      this.chatsState.set(normalizedChats);
+      this.activeChatIdState.set(normalizedChats[0]?.id ?? null);
     } finally {
       this.loadingState.set(false);
     }
@@ -80,7 +81,7 @@ export class ChatService {
     this.loadingState.set(true);
     try {
       const response = await this.api.createChat(token);
-      const nextChats = [response.chat, ...this.chatsState()];
+      const nextChats = [this.normalizeChat(response.chat), ...this.chatsState()];
       this.chatsState.set(nextChats);
       this.activeChatIdState.set(response.chat.id);
     } finally {
@@ -116,7 +117,7 @@ export class ChatService {
     this.loadingState.set(true);
     try {
       const response = await this.api.sendMessage(token, chatId, trimmed);
-      this.patchChat(response.chat, true);
+      this.patchChat(this.normalizeChat(response.chat), true);
     } finally {
       this.loadingState.set(false);
     }
@@ -132,12 +133,32 @@ export class ChatService {
     this.chatsState.set(moveToFront ? [chat, ...remaining] : [chat, ...remaining]);
   }
 
+  private normalizeChat(chat: ChatSummary): ChatSummary {
+    return {
+      ...chat,
+      preview: this.cleanAssistantPrefix(chat.preview),
+      messages: this.normalizeMessages(chat.messages)
+    };
+  }
+
+  private normalizeMessages(messages: ChatMessage[]): ChatMessage[] {
+    return messages.map((message) => ({
+      ...message,
+      speakerLabel: message.role === 'assistant' ? 'FLO' : 'TE',
+      content: message.role === 'assistant' ? this.cleanAssistantPrefix(message.content) : message.content
+    }));
+  }
+
+  private cleanAssistantPrefix(content: string): string {
+    return content.replace(/^FLO MONDJA:\s*/i, '').trim();
+  }
+
   private createLocalMessage(content: string, role: 'user' | 'assistant'): ChatMessage {
     return {
       id: Date.now(),
       role,
       content,
-      speakerLabel: role === 'assistant' ? 'FLO MONDJA' : 'TE',
+      speakerLabel: role === 'assistant' ? 'FLO' : 'TE',
       createdAt: new Date().toISOString()
     };
   }

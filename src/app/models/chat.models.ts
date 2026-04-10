@@ -28,3 +28,12 @@ export interface AuthResponse {
 export interface ChatResponse {
   chat: ChatSummary;
 }
+
+export interface QuestionTheme {
+  intent: string;
+  category: string;
+  title: string;
+  example: string;
+  accentClass: string;
+  questions: string[];
+}

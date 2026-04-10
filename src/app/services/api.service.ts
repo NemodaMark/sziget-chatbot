@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import { AuthResponse, ChatResponse, ChatSummary } from '../models/chat.models';
+import { AuthResponse, ChatResponse, ChatSummary, QuestionTheme } from '../models/chat.models';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class ApiService {
 
   async guestChat(payload: { message: string; messages: { role: string; content: string }[] }): Promise<ChatResponse> {
     return lastValueFrom(this.http.post<ChatResponse>(`${this.baseUrl}/guest-chat`, payload));
+  }
+
+  async listThemes(): Promise<{ themes: QuestionTheme[] }> {
+    return lastValueFrom(this.http.get<{ themes: QuestionTheme[] }>(`${this.baseUrl}/themes`));
   }
 
   async listChats(token: string): Promise<{ chats: ChatSummary[] }> {
