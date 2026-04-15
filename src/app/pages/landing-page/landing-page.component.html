@@ -1,0 +1,177 @@
+<div class="festival-page">
+  <header class="site-header">
+    <a class="brand-link" href="#top" aria-label="Sziget Festival">
+      <img
+        class="brand-logo"
+        src="https://szigetfestival.com/wp-content/uploads/2024/01/SZ26-Logo-Date-Tagline-PINIK-EN-1-1.svg"
+        alt="Sziget Festival"
+      />
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#chat">Jegyek</a>
+      <a href="#questions">Lineup</a>
+      <a href="#about">Tudnivalok</a>
+    </nav>
+
+    <a class="header-cta" href="#chat">FLO CHAT</a>
+  </header>
+
+  <div class="promo-strip">
+    <a href="#hero">FEDEZD FEL!</a>
+  </div>
+
+  <main>
+    <section class="discovery-stage">
+      <section class="hero-section" id="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Sziget AI guide</p>
+          <h1>Kerdezz ra. Flo hozza a fesztival-flowt.</h1>
+          <p class="lede">
+            Jegyek, lineup, napi tippek vagy csak a hangulat. Egy gyors guide, hogy konnyebben induljon a sajat
+            Sziget-napod.
+          </p>
+
+          <div class="hero-chips">
+            <span>Jegyek</span>
+            <span>Lineup</span>
+            <span>Napi tervek</span>
+          </div>
+
+          <a class="hero-button" href="#chat">INDULJON A CHAT</a>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-frame">
+            <img src="Szigi-head.png" alt="Flo mascot" class="hero-mascot" />
+          </div>
+          <div class="hero-card-caption">
+            <p class="caption-label">Flo</p>
+            <p>A Sziget chatbot guide, most mar kepben.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-section" id="about" aria-label="About Flo chat">
+        <div class="info-card intro-card">
+          <p class="eyebrow">Mi ez?</p>
+          <h3>Egy gyors Sziget-guide, hogy ne kelljen mindent kulon levadaszni.</h3>
+          <p>
+            Ez az oldal azert keszult, hogy a latogatok egy helyen kapjanak gyors valaszokat a Szigethez kapcsolodo
+            legfontosabb kerdesekre. Nem csak egy chatbot, hanem egy fesztivalos eligazito felulet.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card tilt-a info-ticket">
+            <p class="eyebrow">Hogyan mukodik?</p>
+            <p class="ticket-kicker">Gyors valaszok</p>
+            <p>
+              Te kerdezel, Flo pedig a Python backendbol erkezo valaszokkal segit. A chat mobilon is gyorsan
+              hasznalhato, akar konkret kerdesekre, akar altalanos tajekozodasra.
+            </p>
+          </article>
+
+          <article class="info-card tilt-b info-ticket">
+            <p class="eyebrow">Mit ad pluszban?</p>
+            <p class="ticket-kicker">Festival-flow</p>
+            <p>
+              Gyors eligazitast adhat jegyekrol, lineuprol, napi tippekrol es fesztival-flowrol, majd kesobb tovabbi
+              adatforrasokkal is bovitheto.
+            </p>
+          </article>
+
+          <article class="info-card tilt-c info-ticket">
+            <p class="eyebrow">Ha magad keresnel?</p>
+            <p class="ticket-kicker">Roviditett utvonal</p>
+            <p>
+              Akkor is hasznos lehet: Flo osszefoglal, iranyt mutat, es gyorsabban eljuttat oda, hogy tudd, mire
+              erdemes kulon ranezni.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="question-section" id="questions" aria-label="What you can ask Flo">
+        <div class="question-card question-intro">
+          <p class="eyebrow">Mit kerdezhetsz?</p>
+          <h3>Milyen kerdesekkel erdemes Flohoz fordulni?</h3>
+          <p>
+            A chat akkor a leghasznosabb, ha gyors iranymutatas kell. Kerdezhetsz konkret dolgokat, de akar laza,
+            otletelo modon is hasznalhatod.
+          </p>
+          <p class="question-hint">Kattints egy kartyara, es a mintakerdes azonnal bekerul a chatbe.</p>
+        </div>
+
+        <div class="question-grid">
+          <article
+            class="question-card question-ticket"
+            [ngClass]="theme.accentClass"
+            *ngFor="let theme of questionThemes()"
+            (click)="useThemeQuestion(theme.example)"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="'Mintakerdes betoltese: ' + theme.example"
+          >
+            <p class="eyebrow">{{ theme.category }}</p>
+            <p class="question-title">{{ theme.title }}</p>
+            <p class="question-example">"{{ theme.example }}"</p>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <section class="chat-band" id="chat">
+    <div class="chat-section">
+      <div class="chat-intro">
+        <div>
+          <p class="eyebrow">Live chat</p>
+          <h2>Beszelj Floval</h2>
+        </div>
+
+        <button type="button" class="preview-toggle" (click)="togglePreviewConversation()">
+          {{ previewConversation() ? 'SAJAT CHAT' : 'MINTA CHAT' }}
+        </button>
+      </div>
+
+      <div class="messages">
+        <article
+          class="message"
+          [class.assistant]="entry.role === 'assistant'"
+          [class.user]="entry.role === 'user'"
+          *ngFor="let entry of displayedMessages()"
+        >
+          <div class="message-avatar" *ngIf="entry.role === 'assistant'">
+            <img src="Szigi-head.png" alt="Flo mascot" class="message-mascot" />
+          </div>
+
+          <div class="message-body">
+            <div class="message-meta">
+              <span>{{ entry.speakerLabel }}</span>
+              <span>{{ entry.createdAt | date:'shortTime' }}</span>
+            </div>
+            <p>{{ entry.content }}</p>
+          </div>
+        </article>
+      </div>
+
+      <form class="composer" (ngSubmit)="sendMessage()">
+        <label class="composer-field">
+          <span class="sr-only">Uzenet</span>
+          <textarea
+            name="guestMessage"
+            [ngModel]="message()"
+            (ngModelChange)="message.set($event)"
+            rows="3"
+            placeholder="Kerdezz jegyekrol, lineupral vagy csak dobd be, mire vagy kivancsi..."
+          ></textarea>
+        </label>
+
+        <button class="send-button" type="submit" [disabled]="loading() || !message().trim()">
+          {{ loading() ? 'FLO IR...' : 'KULDES' }}
+        </button>
+      </form>
+    </div>
+  </section>
+</div>

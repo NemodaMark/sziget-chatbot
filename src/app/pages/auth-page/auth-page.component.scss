@@ -1,0 +1,128 @@
+.auth-page {
+  min-height: 100vh;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(255, 190, 11, 0.24), transparent 30%),
+    linear-gradient(155deg, #12070e, #220712 48%, #140817);
+  color: #fff7e9;
+}
+
+.back-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  color: #fff7e9;
+  text-decoration: none;
+}
+
+.auth-card {
+  width: min(1100px, 100%);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: rgba(11, 6, 10, 0.72);
+  border: 2px solid rgba(255, 247, 233, 0.12);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.brand-column,
+.form-column {
+  padding: 2rem;
+}
+
+.brand-column {
+  background:
+    linear-gradient(135deg, rgba(255, 0, 110, 0.24), rgba(0, 209, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.24rem;
+  color: #ffd447;
+}
+
+h1 {
+  margin-top: 0.5rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+}
+
+.perk-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.perk-list span,
+.tabs button {
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 247, 233, 0.16);
+  background: rgba(255, 247, 233, 0.08);
+}
+
+.tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.tabs button,
+.submit-btn {
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.tabs button.active,
+.submit-btn {
+  background: linear-gradient(90deg, #ffbe0b, #ff006e);
+  color: #220712;
+  border: 0;
+  font-weight: 800;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.45rem;
+}
+
+input {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 247, 233, 0.15);
+  background: rgba(255, 247, 233, 0.06);
+  color: #fff7e9;
+  padding: 0.95rem 1rem;
+  font: inherit;
+}
+
+.error {
+  color: #ff89b3;
+}
+
+.submit-btn {
+  margin-top: 0.5rem;
+  padding: 1rem 1.2rem;
+  border-radius: 18px;
+}
+
+@media (max-width: 900px) {
+  .auth-page {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+}
