@@ -1,5 +1,3 @@
-# Barni által elkészített adatbázis
-
 data = [
 
     ("Idén is augusztus elején lesz a Sziget?", "festival_info",

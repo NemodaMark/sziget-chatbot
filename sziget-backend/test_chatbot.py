@@ -1,10 +1,3 @@
-# tesztesetek Daninak
-#
-#Nem vagy köteles ezzel a fájllal gyártani a teszteseteket, de használhatod meg átnézheted hogy kb mire van szükség
-#
-# Futtatás:
-#   python test_chatbot.py
-#
 # A tesztek lefedik:
 #   - Pontos egyezések (a tudásbázisban szereplő kérdések)
 #   - Parafrazeált / más szavakkal megfogalmazott kérdések
@@ -15,60 +8,42 @@
 import sys
 from chatbot_engine import SzigetChatbot
 
-# ============================================================
-# Tesztesetek definíciója
-# ============================================================
-
 TEST_CASES = [
-    # (bemeneti kérdés, elvárt intent, leírás)
-
-    # --- festival_info ---
     ("Mikor van a Sziget 2026-ban?",          "festival_info",   "Dátum kérdés"),
     ("Hol rendezik meg a Szigetet?",           "festival_info",   "Helyszín kérdés"),
     ("Hány napig tart a fesztivál?",           "festival_info",   "Időtartam kérdés"),
     ("Hogyan jutok ki a Szigetre?",            "festival_info",   "Közlekedés kérdés"),
 
-    # --- pricing ---
     ("Mennyibe kerül a belépő?",               "pricing",         "Jegyár kérdés"),
     ("Lehet olcsóbban jegyet venni?",          "pricing",         "Kedvezmény kérdés"),
     ("Kártyával lehet fizetni a fesztiválon?", "pricing",         "Fizetési mód"),
     ("Drágák az ételek a Szigeten?",           "pricing",         "Árak belül"),
 
-    # --- camping ---
     ("Milyen a sátorozási lehetőség?",         "camping",         "Kemping általános"),
     ("Van fürdési lehetőség a kempingben?",    "camping",         "Zuhany kérdés"),
     ("Mennyire zsúfolt a kemping?",            "camping",         "Zsúfoltság"),
 
-    # --- rules ---
     ("Mit nem vihetek be magammal?",           "rules",           "Tiltott tárgyak"),
     ("Van biztonsági ellenőrzés?",             "rules",           "Beléptetés"),
     ("Mennyire biztonságos a fesztivál?",      "rules",           "Biztonság"),
 
-    # --- lineup_schedule ---
     ("Kik lesznek a fellépők?",                "lineup_schedule", "Lineup kérdés"),
     ("Lesz-e magyar zenész a Szigeten?",       "lineup_schedule", "Magyar fellépő"),
     ("Milyen zenei stílusok lesznek?",         "lineup_schedule", "Stílusok"),
     ("Hol nézhetem meg a menetrendet?",        "lineup_schedule", "Program forrás"),
 
-    # --- programs ---
     ("Mit lehet csinálni napközben?",          "programs",        "Nappali programok"),
     ("Vannak-e workshopok?",                   "programs",        "Workshopok"),
     ("Milyen szórakozási lehetőség van?",      "programs",        "Szórakozás általános"),
 
-    # --- general ---
     ("Érdemes elmenni a Szigetre?",            "general",         "Ajánlás kérdés"),
     ("Sokan vannak ott?",                      "general",         "Teltség kérdés"),
 
-    # --- fallback esetek ---
     ("Mi a GDP növekedése Magyarországon?",    "unknown",         "Irreleváns kérdés"),
     ("Mikor volt az első holdra szállás?",     "unknown",         "Teljesen off-topic"),
     ("",                                       "unknown",         "Üres input"),
     ("asdfjkl qwerty zxcvbn",                  "unknown",         "Értelmetlen szöveg"),
 ]
-
-# ============================================================
-# Teszt futtató
-# ============================================================
 
 def run_tests(threshold: float = 0.15, verbose: bool = True) -> dict:
     bot = SzigetChatbot(threshold=threshold)
@@ -115,13 +90,11 @@ def run_tests(threshold: float = 0.15, verbose: bool = True) -> dict:
             if not ok:
                 print(f"     ⚠️  Egyezés : {result['matched_q']!r}")
 
-    # Összesítés
     accuracy = passed / len(TEST_CASES) * 100
     print("\n" + "=" * 70)
     print(f"  Eredmény: {passed}/{len(TEST_CASES)} helyes  |  Pontosság: {accuracy:.1f}%")
     print("=" * 70)
 
-    # Intent-szintű összesítés
     print("\n📊 Intent-szintű eredmények:")
     intent_stats = {}
     for r in results:
